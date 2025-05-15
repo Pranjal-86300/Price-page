@@ -91,6 +91,11 @@ function closeAnalysis() {
   document.getElementById("analysisSection").classList.add("hidden");
   document.getElementById("cropList").classList.remove("hidden");
 }
+document.getElementById("searchBtn").addEventListener("click", () => {
+  const query = document.getElementById("searchInput").value;
+  displayCropList(query);
+});
+
 
 document.getElementById("searchInput").addEventListener("input", (e) => {
   displayCropList(e.target.value);
