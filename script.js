@@ -29,7 +29,7 @@ function displayCropList(filter = "") {
       row.innerHTML = `
         <h3>${cropName}</h3>
         <p>₹${crop.current_price} / quintal</p>
-        <button onclick="showAnalysis('${key}')">${language === "en" ? "Analyse" : "विश्लेषण करें"}</button>
+        <button id="anal" onclick="showAnalysis('${key}')">${language === "en" ? "Analyse" : "विश्लेषण करें"}</button>
       `;
       cropList.appendChild(row);
     }
@@ -91,11 +91,11 @@ function closeAnalysis() {
   document.getElementById("analysisSection").classList.add("hidden");
   document.getElementById("cropList").classList.remove("hidden");
 }
+
 document.getElementById("searchBtn").addEventListener("click", () => {
   const query = document.getElementById("searchInput").value;
   displayCropList(query);
 });
-
 
 document.getElementById("searchInput").addEventListener("input", (e) => {
   displayCropList(e.target.value);

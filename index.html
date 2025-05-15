@@ -24,27 +24,30 @@
       <div class="hamburger" id="menuBtn">&#9776;</div>
     </div>
   </header>
-<!-- ✅ Sub Header with Search + Language Toggle -->
+
+  <!-- ✅ Sub Header with Search + Language Toggle -->
 <section class="top-controls">
   <input type="text" id="searchInput" placeholder="Search crops..." />
-  <button id="searchBtn">Search</button>
-  <button onclick="toggleLanguage()" id="langToggle">हिंदी</button>
+  <div class="button-group">
+    <button onclick="toggleLanguage()" id="langToggle">हिंदी</button>
+    <button id="searchBtn">Search</button>
+  </div>
 </section>
 
-<!-- ✅ Main Content -->
-<main>
-  <div id="cropList"></div>
 
-  <div id="analysisSection" class="analysis hidden">
-    <button class="close-btn" onclick="closeAnalysis()">×</button>
-    <h2 id="analysisTitle"></h2>
-    <p id="priceInfo"></p>
-    <p id="trendVolatility"></p>
-    <canvas id="priceChart"></canvas>
-    <p id="summary"></p>
-  </div>
-</main>
+  <!-- ✅ Main Content -->
+  <main>
+    <div id="cropList"></div>
 
+    <div id="analysisSection" class="analysis hidden">
+      <button class="close-btn" onclick="closeAnalysis()">×</button>
+      <h2 id="analysisTitle"></h2>
+      <p id="priceInfo"></p>
+      <p id="trendVolatility"></p>
+      <canvas id="priceChart"></canvas>
+      <p id="summary"></p>
+    </div>
+  </main>
 
   <!-- ✅ Scripts -->
   <script src="script.js"></script>
