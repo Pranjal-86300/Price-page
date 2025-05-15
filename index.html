@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AgroValue - Crop Prices</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>🌾 AgroValue - Price Page</h1>
+    <div class="controls">
+      <input type="text" id="searchInput" placeholder="Search crop..." />
+      <button onclick="toggleLanguage()" id="langToggle">हिंदी</button>
+    </div>
+  </header>
+
+  <main>
+    <!-- Crop List Section -->
+    <div id="cropList"></div>
+
+    <!-- Analysis Section -->
+    <div id="analysisSection" class="analysis hidden">
+      <h2 id="analysisTitle"></h2>
+      <p id="priceInfo"></p>
+      <p id="trendVolatility"></p>
+      <canvas id="priceChart"></canvas>
+      <p id="summary"></p>
+      <button onclick="closeAnalysis()">Close</button>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
