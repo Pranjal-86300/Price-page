@@ -101,4 +101,5 @@ document.getElementById("searchInput").addEventListener("input", (e) => {
   displayCropList(e.target.value);
 });
 
+
 window.onload = loadData;
