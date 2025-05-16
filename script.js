@@ -35,21 +35,46 @@ function displayCropList(filter = "") {
     }
   });
 }
-
 function showAnalysis(cropKey) {
   const crop = crops[cropKey];
   const cropName = language === "en" ? cropKey : crop.name_hi;
 
+  // ── 1) pick price label per language ────────────────────────────
+  const priceLabel =
+    language === "en"
+      ? "Current Price"
+      : "वर्तमान कीमत";
+
+  // ── 2) fetch trend & volatility regardless of key spelling ──────
+  const trendValue =
+    language === "en"
+      ? crop.trend                        // e.g. "rising"
+      : crop["रुझान"] || crop.trend;      // fallback to English key if needed
+
+  const volatilityValue =
+    language === "en"
+      ? crop.volatility                   // e.g. "low"
+      : crop["उतार-चढ़ाव"] || crop.volatility;
+
+  // ── 3) build the combined line per language ────────────────────
+  const trendVolText =
+    language === "en"
+      ? `Trend: ${trendValue}, Volatility: ${volatilityValue}`
+      : `रुझान: ${trendValue}, उतार-चढ़ाव: ${volatilityValue}`;
+
+  // ── 4) switch the views & inject all text ──────────────────────
   document.getElementById("cropList").classList.add("hidden");
   document.getElementById("analysisSection").classList.remove("hidden");
 
   document.getElementById("analysisTitle").textContent = cropName;
-  document.getElementById("priceInfo").textContent = `Current Price: ₹${crop.current_price} (${crop.unit})`;
-  document.getElementById("trendVolatility").textContent = `Trend: ${crop.trend}, Volatility: ${crop.volatility}`;
+  document.getElementById("priceInfo").textContent =
+    `${priceLabel}: ₹${crop.current_price} (${crop.unit})`;
+  document.getElementById("trendVolatility").textContent = trendVolText;
   document.getElementById("summary").textContent = crop.summary;
 
   drawChart(crop.past_30_days, crop.predicted_7_days);
 }
+
 
 function drawChart(last30, next7) {
   const ctx = document.getElementById("priceChart").getContext("2d");
